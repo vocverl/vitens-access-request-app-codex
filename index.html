@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitens Toegangsaanvraag</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__brand">
+            <img src="https://www.vitens.nl/-/media/Project/Vitens/VitensNl/vitens-logo.jpg" alt="Vitens" class="header__logo" />
+            <div>
+                <h1 class="header__title">Toegangsaanvraag Portaal</h1>
+                <p class="header__subtitle">Vraag Microsoft Visio en SAP P2P rollen snel en eenvoudig aan.</p>
+            </div>
+        </div>
+        <div class="header__meta">
+            <span class="badge badge--demo" id="modeBadge">Demo modus</span>
+            <button id="modeToggle" class="button button--secondary" type="button">Switch naar Online</button>
+        </div>
+    </header>
+
+    <main class="layout">
+        <section class="panel panel--large">
+            <h2>1. Zoek en selecteer toegang</h2>
+            <div class="search">
+                <label class="search__label" for="searchInput">Waar ben je naar op zoek?</label>
+                <div class="search__box">
+                    <input id="searchInput" type="text" placeholder="Bijvoorbeeld: Visio of P2P approver" />
+                    <button id="searchButton" class="button button--primary" type="button">Zoeken</button>
+                </div>
+                <p class="search__hint">Filter direct op Microsoft Visio licenties of SAP Purchase-to-Pay rollen.</p>
+            </div>
+
+            <div class="results" id="resultsContainer">
+                <div class="results__empty">Voer een zoekterm in om te starten.</div>
+            </div>
+        </section>
+
+        <aside class="panel panel--sidebar">
+            <section class="card">
+                <h2>2. Gegevens van de aanvrager</h2>
+                <form id="requestForm" class="form">
+                    <div class="form__group">
+                        <label for="requesterName">Naam *</label>
+                        <input id="requesterName" name="requesterName" type="text" autocomplete="name" required />
+                    </div>
+                    <div class="form__group">
+                        <label for="requesterEmail">E-mailadres *</label>
+                        <input id="requesterEmail" name="requesterEmail" type="email" autocomplete="email" required />
+                    </div>
+                    <div class="form__group">
+                        <label for="requesterId">Personeelsnummer *</label>
+                        <input id="requesterId" name="requesterId" type="text" required />
+                    </div>
+                    <div class="form__group">
+                        <label for="requesterManager">Manager</label>
+                        <input id="requesterManager" name="requesterManager" type="text" />
+                    </div>
+                    <div class="form__group form__group--full">
+                        <label for="requestJustification">Motivatie *</label>
+                        <textarea id="requestJustification" name="requestJustification" rows="3" required></textarea>
+                    </div>
+                </form>
+            </section>
+
+            <section class="card">
+                <h2>3. Winkelwagen</h2>
+                <div id="cartContainer" class="cart">
+                    <p class="cart__empty">Nog geen items geselecteerd.</p>
+                </div>
+                <button id="submitButton" class="button button--primary button--full" type="button" disabled>Aanvraag indienen</button>
+                <p class="info info--muted">Aanvragen worden lokaal gesimuleerd in demo modus. Voor live GRC integratie gebruik je de online modus.</p>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Vitens. Prototype ontwikkeld met Codex.</p>
+    </footer>
+
+    <template id="resultTemplate">
+        <article class="result">
+            <div class="result__meta">
+                <h3 class="result__title"></h3>
+                <p class="result__description"></p>
+                <span class="badge result__badge"></span>
+            </div>
+            <button class="button button--ghost result__button" type="button">Toevoegen</button>
+        </article>
+    </template>
+
+    <template id="cartItemTemplate">
+        <div class="cart-item">
+            <div>
+                <p class="cart-item__title"></p>
+                <p class="cart-item__subtitle"></p>
+            </div>
+            <button class="button button--ghost cart-item__remove" type="button">Verwijderen</button>
+        </div>
+    </template>
+
+    <script src="app.js" defer></script>
+</body>
+</html>
